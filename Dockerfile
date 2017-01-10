@@ -15,16 +15,16 @@ EXPOSE 3000
 # and where is your data folder
 RUN echo '{ \
   "httpPort": 3000, \
-  "configPath": "/usr/src/app/istex-demonstrateur/diachro.json", \
-  "dataPath": "/usr/src/app/istex-demonstrateur/db/" \
+  "configPath": "/usr/src/app/diachronic-explorer/diachro.json", \
+  "dataPath": "/usr/src/app/diachronic-explorer/db/" \
 }' > /etc/ezmaster.json
 
 # COPY all files
-RUN mkdir /usr/src/app/
-COPY . /usr/src/app/
+RUN mkdir -p /usr/src/app/diachronic-explorer
+COPY . /usr/src/app/diachronic-explorer
 
 # Set WORDIR
-WORKDIR /usr/src/app/istex-demonstrateur
+WORKDIR /usr/src/app/diachronic-explorer
 
 # CMD
 CMD node serveur.js
