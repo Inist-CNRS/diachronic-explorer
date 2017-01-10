@@ -1,13 +1,14 @@
 # Get nodejs image
 FROM node:argon
 
-# ------------------------------------------------------- #
-# INSTALL HERE YOUR PROGRAM DEPENDENCIES (ex below, java) #
-# RUN apt-get install -y default-jre                      #
-# ------------------------------------------------------- #
+# Create app directory
+RUN mkdir /app
+WORKDIR /app
 
-# 3000 is your web server listening port
-EXPOSE 3000
+# npm dependencies before addinq source code
+COPY ./package.json /app
+RUN npm install --production -q && npm cache clean
+COPY . /app
 
 # Then create the /etc/ezmaster.json in your docker image.
 # It will tell to ezmaster where is your web server (ex: port 3000),
@@ -15,16 +16,10 @@ EXPOSE 3000
 # and where is your data folder
 RUN echo '{ \
   "httpPort": 3000, \
-  "configPath": "/usr/src/app/diachronic-explorer/diachro.json", \
-  "dataPath": "/usr/src/app/diachronic-explorer/db/" \
+  "configPath": "/app/diachro.json", \
+  "dataPath": "/app/db/" \
 }' > /etc/ezmaster.json
 
-# COPY all files
-RUN mkdir -p /usr/src/app/diachronic-explorer
-COPY . /usr/src/app/diachronic-explorer
-
-# Set WORDIR
-WORKDIR /usr/src/app/diachronic-explorer
-
-# CMD
-CMD node serveur.js
+# Run the application
+EXPOSE 3000
+CMD [ "npm", "start" ]
