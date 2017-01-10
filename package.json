@@ -1,6 +1,6 @@
 {
   "name": "malist",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "dependencies": {
     "d3": "^3.5.9",
     "d3-sankey": "^0.2.1",
