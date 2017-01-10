@@ -1,19 +1,23 @@
 {
-  "name": "malist",
+  "name": "diachronic-explorer",
   "version": "1.0.0",
+  "private": true,
+  "scripts": {
+	  "start": "node serveur.js"
+  },
   "dependencies": {
-    "d3": "^3.5.9",
-    "d3-sankey": "^0.2.1",
-    "ejs": "~0.8.3",
-    "express": "~3.2.1",
-    "fs": "0.0.2",
-    "jsdom": "^7.1.0",
-    "lazy": "^1.0.11",
-    "line-by-line": "^0.1.4",
-    "mongodb": "^2.1.4",
-    "tingodb": "~0.4.0",
-    "winston": "~2.1.1"
+	  "d3": "^3.5.9",
+	  "d3-sankey": "^0.2.1",
+	  "ejs": "~0.8.3",
+	  "express": "~3.2.1",
+	  "fs": "0.0.2",
+	  "jsdom": "^7.1.0",
+	  "lazy": "^1.0.11",
+	  "line-by-line": "^0.1.4",
+	  "mongodb": "^2.1.4",
+	  "tingodb": "~0.4.0",
+	  "winston": "~2.1.1"
   },
   "author": "Nico <dugue.nic@gmail.com>",
-  "Description": "Un gestionnaire de ToDo List"
+  "Description": "Visualizing diachronic results"
 }
